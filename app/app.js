@@ -50,4 +50,5 @@ angular.module('hdoQuiz', ['ionic', 'ui.router'])
         StatusBar.styleDefault();
       }
     });
-  });
+  })
+  .directive('hdoCard', require('./directives/card.directive'));

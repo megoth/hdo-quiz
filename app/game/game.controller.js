@@ -1,20 +1,29 @@
-function GameController() {
+var Swing = require('swing');
+
+function GameController($scope) {
   var vm = this;
+  vm.addCard = addCard;
   vm.swipeLeft = swipeLeft;
   vm.swipeRight = swipeRight;
 
   activate();
 
   function activate() {
-    vm.direction = 'no swipe yet';
+    vm.promises = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    vm.currentPromise = 0;
+    vm.stack = Swing.Stack();
+  }
+
+  function addCard(cardElement) {
+    vm.stack.createCard(cardElement);
   }
 
   function swipeLeft() {
-    vm.direction = 'left';
+    vm.currentPromise++;
   }
 
   function swipeRight() {
-    vm.direction = 'right';
+    vm.currentPromise++;
   }
 }
 
