@@ -5,6 +5,7 @@ GameController.$inject = ['promiseService', 'partyService'];
 export default function GameController(promiseService, partyService) {
   var vm = this;
   vm.addCard = addCard;
+  vm.giveAnswer = giveAnswer;
   vm.swipeLeft = swipeLeft;
   vm.swipeRight = swipeRight;
 
@@ -19,6 +20,10 @@ export default function GameController(promiseService, partyService) {
 
   function addCard(cardElement) {
     vm.stack.createCard(cardElement);
+  }
+
+  function giveAnswer(partyIndex) {
+    vm.game.giveAnswer(partyIndex);
   }
 
   function swipeLeft() {

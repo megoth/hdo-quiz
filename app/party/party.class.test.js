@@ -15,5 +15,9 @@ describe('Class: Party', () => {
 
   it('gets name', () => {
     expect(party.getName()).toBe('Arbeiderpartiet');
-  })
+  });
+
+  it('gets image', () => {
+    expect(party.getLogo()).toBe('https://www.holderdeord.no/api/parties/a/logo');
+  });
 });

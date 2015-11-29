@@ -3,6 +3,10 @@ export default class Party {
     this.data = data;
   }
 
+  getLogo() {
+    return this.data._links.logo.href.replace('{?version}', '');
+  }
+
   getName() {
     return this.data.name;
   }

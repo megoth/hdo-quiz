@@ -8,4 +8,11 @@
       </div>
     </li>
   </ul>
+  <div class="row answer-alternatives">
+    <div class="col" ng-repeat="party in game.parties">
+      <button class="button button-clear" type="button" ng-click="game.giveAnswer($index)">
+        <img ng-src="{{party.getLogo()}}" />
+      </button>
+    </div>
+  </div>
 </div>

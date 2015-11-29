@@ -60355,7 +60355,7 @@
 	exports.i(__webpack_require__(15), "");
 
 	// module
-	exports.push([module.id, "\n", ""]);
+	exports.push([module.id, ".answer-alternatives {\n  text-align: center; }\n", ""]);
 
 	// exports
 
@@ -60785,7 +60785,7 @@
 /* 22 */
 /***/ function(module, exports) {
 
-	module.exports = "<div>\n  <ul>\n    <li ng-repeat=\"promise in game.promises\" ng-show=\"game.game.currentPromise === $index\">\n      <div class=\"card\" hdo-card=\"game\" on-swipe-left=\"game.swipeLeft()\" on-swipe-right=\"game.swipeRight()\">\n        <div class=\"item item-text-wrap\">\n          <p>{{promise.getText()}}</p>\n        </div>\n      </div>\n    </li>\n  </ul>\n</div>"
+	module.exports = "<div>\n  <ul>\n    <li ng-repeat=\"promise in game.promises\" ng-show=\"game.game.currentPromise === $index\">\n      <div class=\"card\" hdo-card=\"game\" on-swipe-left=\"game.swipeLeft()\" on-swipe-right=\"game.swipeRight()\">\n        <div class=\"item item-text-wrap\">\n          <p>{{promise.getText()}}</p>\n        </div>\n      </div>\n    </li>\n  </ul>\n  <div class=\"row answer-alternatives\">\n    <div class=\"col\" ng-repeat=\"party in game.parties\">\n      <button class=\"button button-clear\" type=\"button\" ng-click=\"game.giveAnswer($index)\">\n        <img ng-src=\"{{party.getLogo()}}\" />\n      </button>\n    </div>\n  </div>\n</div>"
 
 /***/ },
 /* 23 */
@@ -60810,6 +60810,7 @@
 	function GameController(promiseService, partyService) {
 	  var vm = this;
 	  vm.addCard = addCard;
+	  vm.giveAnswer = giveAnswer;
 	  vm.swipeLeft = swipeLeft;
 	  vm.swipeRight = swipeRight;
 
@@ -60824,6 +60825,10 @@
 
 	  function addCard(cardElement) {
 	    vm.stack.createCard(cardElement);
+	  }
+
+	  function giveAnswer(partyIndex) {
+	    vm.game.giveAnswer(partyIndex);
 	  }
 
 	  function swipeLeft() {
@@ -70123,7 +70128,7 @@
 /* 110 */
 /***/ function(module, exports) {
 
-	"use strict";
+	'use strict';
 
 	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
 
@@ -70141,7 +70146,12 @@
 	  }
 
 	  _createClass(Party, [{
-	    key: "getName",
+	    key: 'getLogo',
+	    value: function getLogo() {
+	      return this.data._links.logo.href.replace('{?version}', '');
+	    }
+	  }, {
+	    key: 'getName',
 	    value: function getName() {
 	      return this.data.name;
 	    }

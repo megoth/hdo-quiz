@@ -17,6 +17,11 @@ describe('Controller: Game', function () {
     expect(controller.stack).toBeDefined();
   });
 
+  it('can give answer', function () {
+    controller.giveAnswer(0);
+    expect(controller.game.giveAnswer).toHaveBeenCalledWith(0);
+  });
+
   describe('swiping a promise to the left', function () {
     beforeEach(function() {
       controller.swipeLeft();
