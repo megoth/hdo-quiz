@@ -1,6 +1,7 @@
 var Swing = require('swing');
 
-function GameController() {
+GameController.$inject = ['promiseService'];
+function GameController(promiseService) {
   var vm = this;
   vm.addCard = addCard;
   vm.swipeLeft = swipeLeft;
@@ -9,7 +10,7 @@ function GameController() {
   activate();
 
   function activate() {
-    vm.promises = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    vm.promises = promiseService.getPromises();
     vm.currentPromise = 0;
     vm.stack = Swing.Stack();
   }

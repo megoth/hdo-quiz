@@ -5,18 +5,13 @@ module.exports = {
     entry: "./app.js",
     output: {
         path: path.resolve(__dirname, 'www/js'),
-        filename: "app.js"
+        filename: 'app.js'
     },
     module: {
       loaders: [
-        { test: /\.html$/, loader: "raw-loader" },
-        { test: /\.scss$/, loaders: ["style", "css", "sass"] }
+        { test: /\.html$/, loader: 'raw' },
+        { test: /\.js$/, loader: 'babel', exclude: [/node_modules/, /app\/lib/] },
+        { test: /\.scss$/, loader: 'style!css!sass' }
       ]
-    },
-    resolve: {
-      alias: {
-        'ionic': './lib/ionic/js/ionic.js',
-        'ionic-angular': './lib/ionic/js/ionic-angular.js'
-      }
     }
 };

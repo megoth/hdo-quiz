@@ -32,6 +32,8 @@ module.exports = function(config) {
         'app/**/*.spec.js': ['webpack']
     },
 
+    webpack: require('./webpack.config'),
+
     plugins: [
         require('karma-chrome-launcher'),
         require('karma-jasmine'),

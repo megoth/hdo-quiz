@@ -3,6 +3,7 @@ var GameController = require('./game.controller');
 describe('Controller: Game', function () {
   var controller;
 
+  beforeEach(module('hdoQuiz'));
   beforeEach(inject(function () {
     controller = new GameController();
   }));

@@ -1,17 +1,21 @@
-var angular = require('angular');
+'use strict';
+
+const angular = require('angular');
 require('angular-animate');
 require('angular-resource');
 require('angular-sanitize');
 require('angular-ui-router');
-require('ionic');
-require('ionic-angular');
+require('./lib/ionic/js/ionic.js');
+require('./lib/ionic/js/ionic-angular.js');
 
 require('./style/app.scss');
 
-angular.module('hdoQuiz', ['ionic', 'ui.router'])
+module.exports = angular.module('hdoQuiz', ['ionic', 'ui.router'])
   .config(stateConfig)
   .run(ionicConfig)
-  .directive('hdoCard', require('./directives/card.directive'));
+  .directive('hdoCard', require('./directives/card.directive'))
+  .factory('promiseFactory', require('./promise/promise.factory'))
+  .service('promiseService', require('./promise/promise.service'));
 
 stateConfig.$inject = ['$stateProvider', '$urlRouterProvider'];
 function stateConfig($stateProvider, $urlRouterProvider) {
