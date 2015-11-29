@@ -46,6 +46,10 @@
 
 	'use strict';
 
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
 	var _angular = __webpack_require__(1);
 
 	var _angular2 = _interopRequireDefault(_angular);
@@ -78,17 +82,17 @@
 
 	var _card2 = _interopRequireDefault(_card);
 
+	var _party = __webpack_require__(108);
+
+	var _party2 = _interopRequireDefault(_party);
+
 	var _promise = __webpack_require__(105);
 
 	var _promise2 = _interopRequireDefault(_promise);
 
-	var _promise3 = __webpack_require__(107);
-
-	var _promise4 = _interopRequireDefault(_promise3);
-
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	module.exports = _angular2.default.module('hdoQuiz', ['ionic', _angularUiRouter2.default]).config(_states2.default).run(_ionic2.default).directive('hdoCard', _card2.default).factory('promiseFactory', _promise2.default).service('promiseService', _promise4.default);
+	exports.default = _angular2.default.module('hdoQuiz', ['ionic', _angularUiRouter2.default]).config(_states2.default).run(_ionic2.default).directive('hdoCard', _card2.default).service('partyService', _party2.default).service('promiseService', _promise2.default);
 
 /***/ },
 /* 1 */
@@ -68216,337 +68220,41 @@
 
 	'use strict';
 
-	var _promise = __webpack_require__(106);
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = promiseService;
+
+	var _promise = __webpack_require__(111);
 
 	var _promise2 = _interopRequireDefault(_promise);
 
+	var _underscore = __webpack_require__(106);
+
+	var _underscore2 = _interopRequireDefault(_underscore);
+
+	var _promise3 = __webpack_require__(107);
+
+	var _promise4 = _interopRequireDefault(_promise3);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	module.exports = promiseFactory;
-
-	promiseFactory.$inject = [];
-	function promiseFactory() {
+	promiseService.$inject = [];
+	function promiseService() {
 	  return {
-	    create: create
+	    getPromises: getPromises
 	  };
 
-	  function create(data) {
-	    return new _promise2.default(data);
+	  function getPromises() {
+	    var promises = _promise2.default.getListData();
+	    return (0, _underscore2.default)(promises).shuffle().slice(0, 10).map(function (promiseData) {
+	      return new _promise4.default(promiseData);
+	    });
 	  }
 	}
 
 /***/ },
 /* 106 */
-/***/ function(module, exports) {
-
-	"use strict";
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	var PartyPromise = function PartyPromise(data) {
-	  _classCallCheck(this, PartyPromise);
-
-	  this.data = data;
-	};
-
-	exports.default = PartyPromise;
-
-/***/ },
-/* 107 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	var _ = __webpack_require__(108);
-
-	module.exports = promiseService;
-
-	promiseService.$inject = ['promiseFactory'];
-	function promiseService(promiseFactory) {
-	   return {
-	      getPromises: getPromises
-	   };
-
-	   function getPromises() {
-	      var promises = [{
-	         "body": "Ap vil øke kvinneandelen i forsvaret.",
-	         "source": "Partiprogram",
-	         "promisor_name": "Arbeiderpartiet",
-	         "party_names": ["Arbeiderpartiet"],
-	         "parliament_period_name": "2013-2017",
-	         "_links": {
-	            "self": {
-	               "href": "https://www.holderdeord.no/api/promises/9911"
-	            },
-	            "parties": [{
-	               "title": "Arbeiderpartiet",
-	               "href": "https://www.holderdeord.no/api/parties/a"
-	            }],
-	            "widget": {
-	               "href": "https://www.holderdeord.no/promises/9911/widget",
-	               "type": "text/html"
-	            }
-	         }
-	      }, {
-	         "body": "Ap vil ivareta hjemfallsinstituttet og fortsatt sikre et sterkt offentlig eierskap til vannkraftressursene, ved at de eies av det offentlige med minimum 2/3 og at det kun er selskaper med minimum 2/3 offentlig eierskap som kan få nye konsesjoner.",
-	         "source": "Partiprogram",
-	         "promisor_name": "Arbeiderpartiet",
-	         "party_names": ["Arbeiderpartiet"],
-	         "parliament_period_name": "2013-2017",
-	         "_links": {
-	            "self": {
-	               "href": "https://www.holderdeord.no/api/promises/9407"
-	            },
-	            "parties": [{
-	               "title": "Arbeiderpartiet",
-	               "href": "https://www.holderdeord.no/api/parties/a"
-	            }],
-	            "widget": {
-	               "href": "https://www.holderdeord.no/promises/9407/widget",
-	               "type": "text/html"
-	            }
-	         }
-	      }, {
-	         "body": "Ap vil mobilisere mellommenneskelig omsorg ved å samarbeide med frivillig sektor, støtte og ta vare på den ressursen pårørende representerer.",
-	         "source": "Partiprogram",
-	         "promisor_name": "Arbeiderpartiet",
-	         "party_names": ["Arbeiderpartiet"],
-	         "parliament_period_name": "2013-2017",
-	         "_links": {
-	            "self": {
-	               "href": "https://www.holderdeord.no/api/promises/9609"
-	            },
-	            "parties": [{
-	               "title": "Arbeiderpartiet",
-	               "href": "https://www.holderdeord.no/api/parties/a"
-	            }],
-	            "widget": {
-	               "href": "https://www.holderdeord.no/promises/9609/widget",
-	               "type": "text/html"
-	            }
-	         }
-	      }, {
-	         "body": "Ap vil inngå flere samarbeidsavtaler mellom staten og frivillig sektor på aktuelle områder, som beredskap og inkludering.",
-	         "source": "Partiprogram",
-	         "promisor_name": "Arbeiderpartiet",
-	         "party_names": ["Arbeiderpartiet"],
-	         "parliament_period_name": "2013-2017",
-	         "_links": {
-	            "self": {
-	               "href": "https://www.holderdeord.no/api/promises/9791"
-	            },
-	            "parties": [{
-	               "title": "Arbeiderpartiet",
-	               "href": "https://www.holderdeord.no/api/parties/a"
-	            }],
-	            "widget": {
-	               "href": "https://www.holderdeord.no/promises/9791/widget",
-	               "type": "text/html"
-	            }
-	         }
-	      }, {
-	         "body": "Ap vil utarbeide et Kulturløftet III i samråd med kulturlivet. Kulturløftet I og II har løftet Norge som kulturnasjon. Dette arbeidet vil videreføres.",
-	         "source": "Partiprogram",
-	         "promisor_name": "Arbeiderpartiet",
-	         "party_names": ["Arbeiderpartiet"],
-	         "parliament_period_name": "2013-2017",
-	         "_links": {
-	            "self": {
-	               "href": "https://www.holderdeord.no/api/promises/9802"
-	            },
-	            "parties": [{
-	               "title": "Arbeiderpartiet",
-	               "href": "https://www.holderdeord.no/api/parties/a"
-	            }],
-	            "widget": {
-	               "href": "https://www.holderdeord.no/promises/9802/widget",
-	               "type": "text/html"
-	            }
-	         }
-	      }, {
-	         "body": "SV jobber for at det legges bedre til rette for materialgjenvinning og sikker sluttbehandling av avfall, blant annet gjennom nye ordninger for retur og pant.",
-	         "source": "Partiprogram",
-	         "promisor_name": "Sosialistisk Venstreparti",
-	         "party_names": ["Sosialistisk Venstreparti"],
-	         "parliament_period_name": "2013-2017",
-	         "_links": {
-	            "self": {
-	               "href": "https://www.holderdeord.no/api/promises/5683"
-	            },
-	            "parties": [{
-	               "title": "Sosialistisk Venstreparti",
-	               "href": "https://www.holderdeord.no/api/parties/sv"
-	            }],
-	            "widget": {
-	               "href": "https://www.holderdeord.no/promises/5683/widget",
-	               "type": "text/html"
-	            }
-	         }
-	      }, {
-	         "body": "SV jobber for at det offentlige bruker sin innkjøpsmakt til å fremme miljøvennlig produksjon og forbruk.",
-	         "source": "Partiprogram",
-	         "promisor_name": "Sosialistisk Venstreparti",
-	         "party_names": ["Sosialistisk Venstreparti"],
-	         "parliament_period_name": "2013-2017",
-	         "_links": {
-	            "self": {
-	               "href": "https://www.holderdeord.no/api/promises/5682"
-	            },
-	            "parties": [{
-	               "title": "Sosialistisk Venstreparti",
-	               "href": "https://www.holderdeord.no/api/parties/sv"
-	            }],
-	            "widget": {
-	               "href": "https://www.holderdeord.no/promises/5682/widget",
-	               "type": "text/html"
-	            }
-	         }
-	      }, {
-	         "body": "Ap vil ivareta hjemfallsinstituttet og fortsatt sikre et sterkt offentlig eierskap til vannkraftressursene, ved at de eies av det offentlige med minimum 2/3 og at det kun er selskaper med minimum 2/3 offentlig eierskap som kan få nye konsesjoner.",
-	         "source": "Partiprogram",
-	         "promisor_name": "Arbeiderpartiet",
-	         "party_names": ["Arbeiderpartiet"],
-	         "parliament_period_name": "2013-2017",
-	         "_links": {
-	            "self": {
-	               "href": "https://www.holderdeord.no/api/promises/9407"
-	            },
-	            "parties": [{
-	               "title": "Arbeiderpartiet",
-	               "href": "https://www.holderdeord.no/api/parties/a"
-	            }],
-	            "widget": {
-	               "href": "https://www.holderdeord.no/promises/9407/widget",
-	               "type": "text/html"
-	            }
-	         }
-	      }, {
-	         "body": "Ap vil mobilisere mellommenneskelig omsorg ved å samarbeide med frivillig sektor, støtte og ta vare på den ressursen pårørende representerer.",
-	         "source": "Partiprogram",
-	         "promisor_name": "Arbeiderpartiet",
-	         "party_names": ["Arbeiderpartiet"],
-	         "parliament_period_name": "2013-2017",
-	         "_links": {
-	            "self": {
-	               "href": "https://www.holderdeord.no/api/promises/9609"
-	            },
-	            "parties": [{
-	               "title": "Arbeiderpartiet",
-	               "href": "https://www.holderdeord.no/api/parties/a"
-	            }],
-	            "widget": {
-	               "href": "https://www.holderdeord.no/promises/9609/widget",
-	               "type": "text/html"
-	            }
-	         }
-	      }, {
-	         "body": "SV jobber for at det igangsettes utvikling av bedre ordninger for omsorg, i tråd med Lov om barneverntjenester,\nsom på sikt skal favne alle enslige mindreårige asylsøkere mellom 15 og 18 år.",
-	         "source": "Partiprogram",
-	         "promisor_name": "Sosialistisk Venstreparti",
-	         "party_names": ["Sosialistisk Venstreparti"],
-	         "parliament_period_name": "2013-2017",
-	         "_links": {
-	            "self": {
-	               "href": "https://www.holderdeord.no/api/promises/6677"
-	            },
-	            "parties": [{
-	               "title": "Sosialistisk Venstreparti",
-	               "href": "https://www.holderdeord.no/api/parties/sv"
-	            }],
-	            "widget": {
-	               "href": "https://www.holderdeord.no/promises/6677/widget",
-	               "type": "text/html"
-	            }
-	         }
-	      }, {
-	         "body": "Ap vil inngå flere samarbeidsavtaler mellom staten og frivillig sektor på aktuelle områder, som beredskap og inkludering.",
-	         "source": "Partiprogram",
-	         "promisor_name": "Arbeiderpartiet",
-	         "party_names": ["Arbeiderpartiet"],
-	         "parliament_period_name": "2013-2017",
-	         "_links": {
-	            "self": {
-	               "href": "https://www.holderdeord.no/api/promises/9791"
-	            },
-	            "parties": [{
-	               "title": "Arbeiderpartiet",
-	               "href": "https://www.holderdeord.no/api/parties/a"
-	            }],
-	            "widget": {
-	               "href": "https://www.holderdeord.no/promises/9791/widget",
-	               "type": "text/html"
-	            }
-	         }
-	      }, {
-	         "body": "Ap vil utarbeide et Kulturløftet III i samråd med kulturlivet. Kulturløftet I og II har løftet Norge som kulturnasjon. Dette arbeidet vil videreføres.",
-	         "source": "Partiprogram",
-	         "promisor_name": "Arbeiderpartiet",
-	         "party_names": ["Arbeiderpartiet"],
-	         "parliament_period_name": "2013-2017",
-	         "_links": {
-	            "self": {
-	               "href": "https://www.holderdeord.no/api/promises/9802"
-	            },
-	            "parties": [{
-	               "title": "Arbeiderpartiet",
-	               "href": "https://www.holderdeord.no/api/parties/a"
-	            }],
-	            "widget": {
-	               "href": "https://www.holderdeord.no/promises/9802/widget",
-	               "type": "text/html"
-	            }
-	         }
-	      }, {
-	         "body": "SV jobber for at enslige mindreårige asylsøkere sine søknader blir behandlet i Norge og at de ikke returneres til førstesøknadsland slik Dublin-regelverket åpner for.",
-	         "source": "Partiprogram",
-	         "promisor_name": "Sosialistisk Venstreparti",
-	         "party_names": ["Sosialistisk Venstreparti"],
-	         "parliament_period_name": "2013-2017",
-	         "_links": {
-	            "self": {
-	               "href": "https://www.holderdeord.no/api/promises/6681"
-	            },
-	            "parties": [{
-	               "title": "Sosialistisk Venstreparti",
-	               "href": "https://www.holderdeord.no/api/parties/sv"
-	            }],
-	            "widget": {
-	               "href": "https://www.holderdeord.no/promises/6681/widget",
-	               "type": "text/html"
-	            }
-	         }
-	      }, {
-	         "body": "SV jobber for at det gjennomføres en gjennomgang av likestillingskonsekvenser av familieinnvandringspolitikken, der man nøye gjennomgår praktiseringen av mishandlingsbestemmelsen, praktiseringen av proforma-bestemmelsen og kravet til økonomisk underhold.",
-	         "source": "Partiprogram",
-	         "promisor_name": "Sosialistisk Venstreparti",
-	         "party_names": ["Sosialistisk Venstreparti"],
-	         "parliament_period_name": "2013-2017",
-	         "_links": {
-	            "self": {
-	               "href": "https://www.holderdeord.no/api/promises/6702"
-	            },
-	            "parties": [{
-	               "title": "Sosialistisk Venstreparti",
-	               "href": "https://www.holderdeord.no/api/parties/sv"
-	            }],
-	            "widget": {
-	               "href": "https://www.holderdeord.no/promises/6702/widget",
-	               "type": "text/html"
-	            }
-	         }
-	      }];
-	      return _(promises).shuffle().slice(0, 10).map(function (promiseData) {
-	         return promiseFactory.create(promiseData);
-	      });
-	   }
-	}
-
-/***/ },
-/* 108 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;//     Underscore.js 1.8.3
@@ -70098,6 +69806,622 @@
 	  }
 	}.call(this));
 
+
+/***/ },
+/* 107 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var PartyPromise = function PartyPromise(data) {
+	  _classCallCheck(this, PartyPromise);
+
+	  this.data = data;
+	};
+
+	exports.default = PartyPromise;
+
+/***/ },
+/* 108 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = partyService;
+
+	var _party = __webpack_require__(109);
+
+	var _party2 = _interopRequireDefault(_party);
+
+	var _underscore = __webpack_require__(106);
+
+	var _underscore2 = _interopRequireDefault(_underscore);
+
+	var _party3 = __webpack_require__(110);
+
+	var _party4 = _interopRequireDefault(_party3);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	partyService.$inject = [];
+	function partyService() {
+	  return {
+	    getParties: getParties
+	  };
+
+	  function getParties() {
+	    return _party2.default.getListData().filter(function (party) {
+	      return party.slug === 'a' || party.slug === 'sv';
+	    }).map(function (data) {
+	      return new _party4.default(data);
+	    });
+	  }
+	}
+
+/***/ },
+/* 109 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	   value: true
+	});
+	exports.default = {
+	   getListData: getListData,
+	   getSingleData: getSingleData
+	};
+
+	function getListData() {
+	   return [{
+	      "name": "Arbeiderpartiet",
+	      "slug": "a",
+	      "_links": {
+	         "self": {
+	            "href": "https://www.holderdeord.no/api/parties/a"
+	         },
+	         "representatives": {
+	            "href": "https://www.holderdeord.no/api/parties/a/representatives"
+	         },
+	         "attending_representatives": {
+	            "href": "https://www.holderdeord.no/api/parties/a/representatives?attending=true"
+	         },
+	         "widget": {
+	            "href": "https://www.holderdeord.no/parties/a/widget",
+	            "type": "text/html"
+	         },
+	         "logo": {
+	            "href": "https://www.holderdeord.no/api/parties/a/logo{?version}",
+	            "templated": true,
+	            "type": "image/png"
+	         }
+	      }
+	   }, {
+	      "name": "Fremskrittspartiet",
+	      "slug": "frp",
+	      "_links": {
+	         "self": {
+	            "href": "https://www.holderdeord.no/api/parties/frp"
+	         },
+	         "representatives": {
+	            "href": "https://www.holderdeord.no/api/parties/frp/representatives"
+	         },
+	         "attending_representatives": {
+	            "href": "https://www.holderdeord.no/api/parties/frp/representatives?attending=true"
+	         },
+	         "widget": {
+	            "href": "https://www.holderdeord.no/parties/frp/widget",
+	            "type": "text/html"
+	         },
+	         "logo": {
+	            "href": "https://www.holderdeord.no/api/parties/frp/logo{?version}",
+	            "templated": true,
+	            "type": "image/png"
+	         }
+	      }
+	   }, {
+	      "name": "Høyre",
+	      "slug": "h",
+	      "_links": {
+	         "self": {
+	            "href": "https://www.holderdeord.no/api/parties/h"
+	         },
+	         "representatives": {
+	            "href": "https://www.holderdeord.no/api/parties/h/representatives"
+	         },
+	         "attending_representatives": {
+	            "href": "https://www.holderdeord.no/api/parties/h/representatives?attending=true"
+	         },
+	         "widget": {
+	            "href": "https://www.holderdeord.no/parties/h/widget",
+	            "type": "text/html"
+	         },
+	         "logo": {
+	            "href": "https://www.holderdeord.no/api/parties/h/logo{?version}",
+	            "templated": true,
+	            "type": "image/png"
+	         }
+	      }
+	   }, {
+	      "name": "Kristelig Folkeparti",
+	      "slug": "krf",
+	      "_links": {
+	         "self": {
+	            "href": "https://www.holderdeord.no/api/parties/krf"
+	         },
+	         "representatives": {
+	            "href": "https://www.holderdeord.no/api/parties/krf/representatives"
+	         },
+	         "attending_representatives": {
+	            "href": "https://www.holderdeord.no/api/parties/krf/representatives?attending=true"
+	         },
+	         "widget": {
+	            "href": "https://www.holderdeord.no/parties/krf/widget",
+	            "type": "text/html"
+	         },
+	         "logo": {
+	            "href": "https://www.holderdeord.no/api/parties/krf/logo{?version}",
+	            "templated": true,
+	            "type": "image/png"
+	         }
+	      }
+	   }, {
+	      "name": "Miljøpartiet De Grønne",
+	      "slug": "mdg",
+	      "_links": {
+	         "self": {
+	            "href": "https://www.holderdeord.no/api/parties/mdg"
+	         },
+	         "representatives": {
+	            "href": "https://www.holderdeord.no/api/parties/mdg/representatives"
+	         },
+	         "attending_representatives": {
+	            "href": "https://www.holderdeord.no/api/parties/mdg/representatives?attending=true"
+	         },
+	         "widget": {
+	            "href": "https://www.holderdeord.no/parties/mdg/widget",
+	            "type": "text/html"
+	         },
+	         "logo": {
+	            "href": "https://www.holderdeord.no/api/parties/mdg/logo{?version}",
+	            "templated": true,
+	            "type": "image/png"
+	         }
+	      }
+	   }, {
+	      "name": "Senterpartiet",
+	      "slug": "sp",
+	      "_links": {
+	         "self": {
+	            "href": "https://www.holderdeord.no/api/parties/sp"
+	         },
+	         "representatives": {
+	            "href": "https://www.holderdeord.no/api/parties/sp/representatives"
+	         },
+	         "attending_representatives": {
+	            "href": "https://www.holderdeord.no/api/parties/sp/representatives?attending=true"
+	         },
+	         "widget": {
+	            "href": "https://www.holderdeord.no/parties/sp/widget",
+	            "type": "text/html"
+	         },
+	         "logo": {
+	            "href": "https://www.holderdeord.no/api/parties/sp/logo{?version}",
+	            "templated": true,
+	            "type": "image/png"
+	         }
+	      }
+	   }, {
+	      "name": "Sosialistisk Venstreparti",
+	      "slug": "sv",
+	      "_links": {
+	         "self": {
+	            "href": "https://www.holderdeord.no/api/parties/sv"
+	         },
+	         "representatives": {
+	            "href": "https://www.holderdeord.no/api/parties/sv/representatives"
+	         },
+	         "attending_representatives": {
+	            "href": "https://www.holderdeord.no/api/parties/sv/representatives?attending=true"
+	         },
+	         "widget": {
+	            "href": "https://www.holderdeord.no/parties/sv/widget",
+	            "type": "text/html"
+	         },
+	         "logo": {
+	            "href": "https://www.holderdeord.no/api/parties/sv/logo{?version}",
+	            "templated": true,
+	            "type": "image/png"
+	         }
+	      }
+	   }, {
+	      "name": "Venstre",
+	      "slug": "v",
+	      "_links": {
+	         "self": {
+	            "href": "https://www.holderdeord.no/api/parties/v"
+	         },
+	         "representatives": {
+	            "href": "https://www.holderdeord.no/api/parties/v/representatives"
+	         },
+	         "attending_representatives": {
+	            "href": "https://www.holderdeord.no/api/parties/v/representatives?attending=true"
+	         },
+	         "widget": {
+	            "href": "https://www.holderdeord.no/parties/v/widget",
+	            "type": "text/html"
+	         },
+	         "logo": {
+	            "href": "https://www.holderdeord.no/api/parties/v/logo{?version}",
+	            "templated": true,
+	            "type": "image/png"
+	         }
+	      }
+	   }];
+	}
+
+	function getSingleData() {
+	   return {
+	      "name": "Arbeiderpartiet",
+	      "slug": "a",
+	      "_links": {
+	         "self": {
+	            "href": "https://www.holderdeord.no/api/parties/a"
+	         },
+	         "representatives": {
+	            "href": "https://www.holderdeord.no/api/parties/a/representatives"
+	         },
+	         "attending_representatives": {
+	            "href": "https://www.holderdeord.no/api/parties/a/representatives?attending=true"
+	         },
+	         "widget": {
+	            "href": "https://www.holderdeord.no/parties/a/widget",
+	            "type": "text/html"
+	         },
+	         "logo": {
+	            "href": "https://www.holderdeord.no/api/parties/a/logo{?version}",
+	            "templated": true,
+	            "type": "image/png"
+	         }
+	      }
+	   };
+	}
+
+/***/ },
+/* 110 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Party = function Party(data) {
+	  _classCallCheck(this, Party);
+
+	  this.data = data;
+	};
+
+	exports.default = Party;
+
+/***/ },
+/* 111 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	Object.defineProperty(exports, "__esModule", {
+	   value: true
+	});
+	exports.default = {
+	   getListData: getListData,
+	   getSingleData: getSingleData
+	};
+
+	function getListData() {
+	   return [{
+	      "body": "Ap vil øke kvinneandelen i forsvaret.",
+	      "source": "Partiprogram",
+	      "promisor_name": "Arbeiderpartiet",
+	      "party_names": ["Arbeiderpartiet"],
+	      "parliament_period_name": "2013-2017",
+	      "_links": {
+	         "self": {
+	            "href": "https://www.holderdeord.no/api/promises/9911"
+	         },
+	         "parties": [{
+	            "title": "Arbeiderpartiet",
+	            "href": "https://www.holderdeord.no/api/parties/a"
+	         }],
+	         "widget": {
+	            "href": "https://www.holderdeord.no/promises/9911/widget",
+	            "type": "text/html"
+	         }
+	      }
+	   }, {
+	      "body": "Ap vil ivareta hjemfallsinstituttet og fortsatt sikre et sterkt offentlig eierskap til vannkraftressursene, ved at de eies av det offentlige med minimum 2/3 og at det kun er selskaper med minimum 2/3 offentlig eierskap som kan få nye konsesjoner.",
+	      "source": "Partiprogram",
+	      "promisor_name": "Arbeiderpartiet",
+	      "party_names": ["Arbeiderpartiet"],
+	      "parliament_period_name": "2013-2017",
+	      "_links": {
+	         "self": {
+	            "href": "https://www.holderdeord.no/api/promises/9407"
+	         },
+	         "parties": [{
+	            "title": "Arbeiderpartiet",
+	            "href": "https://www.holderdeord.no/api/parties/a"
+	         }],
+	         "widget": {
+	            "href": "https://www.holderdeord.no/promises/9407/widget",
+	            "type": "text/html"
+	         }
+	      }
+	   }, {
+	      "body": "Ap vil mobilisere mellommenneskelig omsorg ved å samarbeide med frivillig sektor, støtte og ta vare på den ressursen pårørende representerer.",
+	      "source": "Partiprogram",
+	      "promisor_name": "Arbeiderpartiet",
+	      "party_names": ["Arbeiderpartiet"],
+	      "parliament_period_name": "2013-2017",
+	      "_links": {
+	         "self": {
+	            "href": "https://www.holderdeord.no/api/promises/9609"
+	         },
+	         "parties": [{
+	            "title": "Arbeiderpartiet",
+	            "href": "https://www.holderdeord.no/api/parties/a"
+	         }],
+	         "widget": {
+	            "href": "https://www.holderdeord.no/promises/9609/widget",
+	            "type": "text/html"
+	         }
+	      }
+	   }, {
+	      "body": "Ap vil inngå flere samarbeidsavtaler mellom staten og frivillig sektor på aktuelle områder, som beredskap og inkludering.",
+	      "source": "Partiprogram",
+	      "promisor_name": "Arbeiderpartiet",
+	      "party_names": ["Arbeiderpartiet"],
+	      "parliament_period_name": "2013-2017",
+	      "_links": {
+	         "self": {
+	            "href": "https://www.holderdeord.no/api/promises/9791"
+	         },
+	         "parties": [{
+	            "title": "Arbeiderpartiet",
+	            "href": "https://www.holderdeord.no/api/parties/a"
+	         }],
+	         "widget": {
+	            "href": "https://www.holderdeord.no/promises/9791/widget",
+	            "type": "text/html"
+	         }
+	      }
+	   }, {
+	      "body": "Ap vil utarbeide et Kulturløftet III i samråd med kulturlivet. Kulturløftet I og II har løftet Norge som kulturnasjon. Dette arbeidet vil videreføres.",
+	      "source": "Partiprogram",
+	      "promisor_name": "Arbeiderpartiet",
+	      "party_names": ["Arbeiderpartiet"],
+	      "parliament_period_name": "2013-2017",
+	      "_links": {
+	         "self": {
+	            "href": "https://www.holderdeord.no/api/promises/9802"
+	         },
+	         "parties": [{
+	            "title": "Arbeiderpartiet",
+	            "href": "https://www.holderdeord.no/api/parties/a"
+	         }],
+	         "widget": {
+	            "href": "https://www.holderdeord.no/promises/9802/widget",
+	            "type": "text/html"
+	         }
+	      }
+	   }, {
+	      "body": "SV jobber for at det legges bedre til rette for materialgjenvinning og sikker sluttbehandling av avfall, blant annet gjennom nye ordninger for retur og pant.",
+	      "source": "Partiprogram",
+	      "promisor_name": "Sosialistisk Venstreparti",
+	      "party_names": ["Sosialistisk Venstreparti"],
+	      "parliament_period_name": "2013-2017",
+	      "_links": {
+	         "self": {
+	            "href": "https://www.holderdeord.no/api/promises/5683"
+	         },
+	         "parties": [{
+	            "title": "Sosialistisk Venstreparti",
+	            "href": "https://www.holderdeord.no/api/parties/sv"
+	         }],
+	         "widget": {
+	            "href": "https://www.holderdeord.no/promises/5683/widget",
+	            "type": "text/html"
+	         }
+	      }
+	   }, {
+	      "body": "SV jobber for at det offentlige bruker sin innkjøpsmakt til å fremme miljøvennlig produksjon og forbruk.",
+	      "source": "Partiprogram",
+	      "promisor_name": "Sosialistisk Venstreparti",
+	      "party_names": ["Sosialistisk Venstreparti"],
+	      "parliament_period_name": "2013-2017",
+	      "_links": {
+	         "self": {
+	            "href": "https://www.holderdeord.no/api/promises/5682"
+	         },
+	         "parties": [{
+	            "title": "Sosialistisk Venstreparti",
+	            "href": "https://www.holderdeord.no/api/parties/sv"
+	         }],
+	         "widget": {
+	            "href": "https://www.holderdeord.no/promises/5682/widget",
+	            "type": "text/html"
+	         }
+	      }
+	   }, {
+	      "body": "Ap vil ivareta hjemfallsinstituttet og fortsatt sikre et sterkt offentlig eierskap til vannkraftressursene, ved at de eies av det offentlige med minimum 2/3 og at det kun er selskaper med minimum 2/3 offentlig eierskap som kan få nye konsesjoner.",
+	      "source": "Partiprogram",
+	      "promisor_name": "Arbeiderpartiet",
+	      "party_names": ["Arbeiderpartiet"],
+	      "parliament_period_name": "2013-2017",
+	      "_links": {
+	         "self": {
+	            "href": "https://www.holderdeord.no/api/promises/9407"
+	         },
+	         "parties": [{
+	            "title": "Arbeiderpartiet",
+	            "href": "https://www.holderdeord.no/api/parties/a"
+	         }],
+	         "widget": {
+	            "href": "https://www.holderdeord.no/promises/9407/widget",
+	            "type": "text/html"
+	         }
+	      }
+	   }, {
+	      "body": "Ap vil mobilisere mellommenneskelig omsorg ved å samarbeide med frivillig sektor, støtte og ta vare på den ressursen pårørende representerer.",
+	      "source": "Partiprogram",
+	      "promisor_name": "Arbeiderpartiet",
+	      "party_names": ["Arbeiderpartiet"],
+	      "parliament_period_name": "2013-2017",
+	      "_links": {
+	         "self": {
+	            "href": "https://www.holderdeord.no/api/promises/9609"
+	         },
+	         "parties": [{
+	            "title": "Arbeiderpartiet",
+	            "href": "https://www.holderdeord.no/api/parties/a"
+	         }],
+	         "widget": {
+	            "href": "https://www.holderdeord.no/promises/9609/widget",
+	            "type": "text/html"
+	         }
+	      }
+	   }, {
+	      "body": "SV jobber for at det igangsettes utvikling av bedre ordninger for omsorg, i tråd med Lov om barneverntjenester,\nsom på sikt skal favne alle enslige mindreårige asylsøkere mellom 15 og 18 år.",
+	      "source": "Partiprogram",
+	      "promisor_name": "Sosialistisk Venstreparti",
+	      "party_names": ["Sosialistisk Venstreparti"],
+	      "parliament_period_name": "2013-2017",
+	      "_links": {
+	         "self": {
+	            "href": "https://www.holderdeord.no/api/promises/6677"
+	         },
+	         "parties": [{
+	            "title": "Sosialistisk Venstreparti",
+	            "href": "https://www.holderdeord.no/api/parties/sv"
+	         }],
+	         "widget": {
+	            "href": "https://www.holderdeord.no/promises/6677/widget",
+	            "type": "text/html"
+	         }
+	      }
+	   }, {
+	      "body": "Ap vil inngå flere samarbeidsavtaler mellom staten og frivillig sektor på aktuelle områder, som beredskap og inkludering.",
+	      "source": "Partiprogram",
+	      "promisor_name": "Arbeiderpartiet",
+	      "party_names": ["Arbeiderpartiet"],
+	      "parliament_period_name": "2013-2017",
+	      "_links": {
+	         "self": {
+	            "href": "https://www.holderdeord.no/api/promises/9791"
+	         },
+	         "parties": [{
+	            "title": "Arbeiderpartiet",
+	            "href": "https://www.holderdeord.no/api/parties/a"
+	         }],
+	         "widget": {
+	            "href": "https://www.holderdeord.no/promises/9791/widget",
+	            "type": "text/html"
+	         }
+	      }
+	   }, {
+	      "body": "Ap vil utarbeide et Kulturløftet III i samråd med kulturlivet. Kulturløftet I og II har løftet Norge som kulturnasjon. Dette arbeidet vil videreføres.",
+	      "source": "Partiprogram",
+	      "promisor_name": "Arbeiderpartiet",
+	      "party_names": ["Arbeiderpartiet"],
+	      "parliament_period_name": "2013-2017",
+	      "_links": {
+	         "self": {
+	            "href": "https://www.holderdeord.no/api/promises/9802"
+	         },
+	         "parties": [{
+	            "title": "Arbeiderpartiet",
+	            "href": "https://www.holderdeord.no/api/parties/a"
+	         }],
+	         "widget": {
+	            "href": "https://www.holderdeord.no/promises/9802/widget",
+	            "type": "text/html"
+	         }
+	      }
+	   }, {
+	      "body": "SV jobber for at enslige mindreårige asylsøkere sine søknader blir behandlet i Norge og at de ikke returneres til førstesøknadsland slik Dublin-regelverket åpner for.",
+	      "source": "Partiprogram",
+	      "promisor_name": "Sosialistisk Venstreparti",
+	      "party_names": ["Sosialistisk Venstreparti"],
+	      "parliament_period_name": "2013-2017",
+	      "_links": {
+	         "self": {
+	            "href": "https://www.holderdeord.no/api/promises/6681"
+	         },
+	         "parties": [{
+	            "title": "Sosialistisk Venstreparti",
+	            "href": "https://www.holderdeord.no/api/parties/sv"
+	         }],
+	         "widget": {
+	            "href": "https://www.holderdeord.no/promises/6681/widget",
+	            "type": "text/html"
+	         }
+	      }
+	   }, {
+	      "body": "SV jobber for at det gjennomføres en gjennomgang av likestillingskonsekvenser av familieinnvandringspolitikken, der man nøye gjennomgår praktiseringen av mishandlingsbestemmelsen, praktiseringen av proforma-bestemmelsen og kravet til økonomisk underhold.",
+	      "source": "Partiprogram",
+	      "promisor_name": "Sosialistisk Venstreparti",
+	      "party_names": ["Sosialistisk Venstreparti"],
+	      "parliament_period_name": "2013-2017",
+	      "_links": {
+	         "self": {
+	            "href": "https://www.holderdeord.no/api/promises/6702"
+	         },
+	         "parties": [{
+	            "title": "Sosialistisk Venstreparti",
+	            "href": "https://www.holderdeord.no/api/parties/sv"
+	         }],
+	         "widget": {
+	            "href": "https://www.holderdeord.no/promises/6702/widget",
+	            "type": "text/html"
+	         }
+	      }
+	   }];
+	}
+
+	function getSingleData() {
+	   return {
+	      "body": "Ap vil øke kvinneandelen i forsvaret.",
+	      "source": "Partiprogram",
+	      "promisor_name": "Arbeiderpartiet",
+	      "party_names": ["Arbeiderpartiet"],
+	      "parliament_period_name": "2013-2017",
+	      "_links": {
+	         "self": {
+	            "href": "https://www.holderdeord.no/api/promises/9911"
+	         },
+	         "parties": [{
+	            "title": "Arbeiderpartiet",
+	            "href": "https://www.holderdeord.no/api/parties/a"
+	         }],
+	         "widget": {
+	            "href": "https://www.holderdeord.no/promises/9911/widget",
+	            "type": "text/html"
+	         }
+	      }
+	   };
+	}
 
 /***/ }
 /******/ ]);
