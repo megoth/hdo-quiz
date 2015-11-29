@@ -7,11 +7,7 @@ module.exports = {
   prod: _(config).extend({
     plugins: [
       new webpack.optimize.OccurenceOrderPlugin(),
-      new webpack.optimize.UglifyJsPlugin({
-          mangle: {
-              except: ['angular', 'exports', 'module', 'require']
-          }
-      })
+      new webpack.optimize.UglifyJsPlugin()
     ]
   })
 };

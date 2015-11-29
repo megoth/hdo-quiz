@@ -1,3 +1,3 @@
 module.exports = {
-  prod: ['webpack:prod', 'uglify:prod']
+  prod: ['webpack:prod']
 };
