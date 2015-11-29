@@ -1,3 +1,4 @@
+RootController.$inject = ['$ionicSideMenuDelegate', '$state', '$rootScope'];
 function RootController($ionicSideMenuDelegate, $state, $rootScope) {
   var vm = this;
   vm.toggleMenu = toggleMenu;

@@ -15,7 +15,8 @@ module.exports = {
     },
     resolve: {
       alias: {
-        'ionic': './lib/ionic/js/ionic.bundle.js'
+        'ionic': './lib/ionic/js/ionic.js',
+        'ionic-angular': './lib/ionic/js/ionic-angular.js'
       }
     }
 };
