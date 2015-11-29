@@ -15,7 +15,7 @@ export default function GameController(promiseService, partyService) {
 
   function activate() {
     vm.parties = partyService.getParties();
-    vm.promises = promiseService.getPromises();
+    vm.promises = promiseService.getPromises(1);
     vm.game = new Game(vm.parties, vm.promises);
     vm.stack = Swing.Stack();
     vm.getScore = vm.game.getScore.bind(vm.game);

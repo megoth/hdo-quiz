@@ -8,8 +8,8 @@ export default function promiseService() {
     getPromises: getPromises
   };
 
-  function getPromises() {
+  function getPromises(numberOfPromises) {
       var promises = mocks.getListData();
-      return _(promises).shuffle().slice(0, 10).map((promiseData) => new PartyPromise(promiseData));
+      return _(promises).shuffle().slice(0, numberOfPromises || 10).map((promiseData) => new PartyPromise(promiseData));
     }
 }
