@@ -1,3 +1,6 @@
+var _ = require('underscore');
+var webpackConfig = require('./webpack.config');
+
 // Karma configuration
 // Generated on Sun Nov 29 2015 02:47:49 GMT+0100 (CET)
 
@@ -30,7 +33,9 @@ module.exports = function(config) {
         'app/**/*.test.js': ['webpack']
     },
 
-    webpack: require('./webpack.config'),
+    webpack: _(webpackConfig).extend({
+        entry: './app.test.js'
+    }),
 
     plugins: [
         require('karma-chrome-launcher'),

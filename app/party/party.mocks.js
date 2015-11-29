@@ -1,6 +1,16 @@
+import _ from 'underscore';
+import Party from './party.class';
+
 export default {
+  getList: getList,
   getListData: getListData,
   getSingleData: getSingleData
+}
+
+function getList() {
+  return getListData()
+      .filter((party) => party.slug === 'a' || party.slug === 'sv')
+      .map((data) => new Party(data));
 }
 
 function getListData() {

@@ -6,10 +6,11 @@ describe('Controller: Game', function () {
   beforeEach(angular.mock.module(game));
   beforeEach(inject(function ($controller) {
     controller = $controller('game');
+    spyOn(controller.game, 'giveAnswer');
   }));
 
-  it('should setup currentPromise', function () {
-    expect(controller.currentPromise).toBe(0);
+  it('should setup game', function () {
+    expect(controller.game).toBeDefined();
   });
 
   it('should setup stack', function () {
@@ -21,8 +22,8 @@ describe('Controller: Game', function () {
       controller.swipeLeft();
     });
 
-    it('should increase currentPromise', function () {
-      expect(controller.currentPromise).toBe(1);
+    it('should give answer', function () {
+      expect(controller.game.giveAnswer).toHaveBeenCalledWith(0);
     });
   });
 
@@ -31,8 +32,8 @@ describe('Controller: Game', function () {
       controller.swipeRight();
     });
 
-    it('should increase currentPromise', function () {
-      expect(controller.currentPromise).toBe(1);
+    it('should give answer', function () {
+      expect(controller.game.giveAnswer).toHaveBeenCalledWith(1);
     });
   });
 });

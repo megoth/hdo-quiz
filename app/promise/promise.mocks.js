@@ -1,6 +1,13 @@
+import Promise from './promise.class';
+
 export default {
+  getList: getList,
   getListData: getListData,
   getSingleData: getSingleData
+}
+
+function getList() {
+  return getListData().slice(0, 10).map((data) => new Promise(data));
 }
 
 function getListData() {

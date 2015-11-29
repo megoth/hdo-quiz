@@ -60785,7 +60785,7 @@
 /* 22 */
 /***/ function(module, exports) {
 
-	module.exports = "<div>\n  <ul>\n    <li ng-repeat=\"promise in game.promises\" ng-show=\"game.currentPromise === $index\">\n      <div class=\"card\" hdo-card=\"game\" on-swipe-left=\"game.swipeLeft(promise)\" on-swipe-right=\"game.swipeRight(promise)\">\n        <div class=\"item item-text-wrap\">\n          <p>Card {{$index}}</p>\n        </div>\n      </div>\n    </li>\n  </ul>\n</div>"
+	module.exports = "<div>\n  <ul>\n    <li ng-repeat=\"promise in game.promises\" ng-show=\"game.game.currentPromise === $index\">\n      <div class=\"card\" hdo-card=\"game\" on-swipe-left=\"game.swipeLeft()\" on-swipe-right=\"game.swipeRight()\">\n        <div class=\"item item-text-wrap\">\n          <p>{{promise.getText()}}</p>\n        </div>\n      </div>\n    </li>\n  </ul>\n</div>"
 
 /***/ },
 /* 23 */
@@ -60797,6 +60797,13 @@
 	  value: true
 	});
 	exports.default = GameController;
+
+	var _game = __webpack_require__(117);
+
+	var _game2 = _interopRequireDefault(_game);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 	var Swing = __webpack_require__(24);
 
 	GameController.$inject = ['promiseService', 'partyService'];
@@ -60811,7 +60818,7 @@
 	  function activate() {
 	    vm.parties = partyService.getParties();
 	    vm.promises = promiseService.getPromises();
-	    vm.currentPromise = 0;
+	    vm.game = new _game2.default(vm.parties, vm.promises);
 	    vm.stack = Swing.Stack();
 	  }
 
@@ -60820,11 +60827,11 @@
 	  }
 
 	  function swipeLeft() {
-	    vm.currentPromise++;
+	    vm.game.giveAnswer(0);
 	  }
 
 	  function swipeRight() {
-	    vm.currentPromise++;
+	    vm.game.giveAnswer(1);
 	  }
 	}
 
@@ -69865,17 +69872,37 @@
 
 /***/ },
 /* 109 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	   value: true
 	});
+
+	var _underscore = __webpack_require__(106);
+
+	var _underscore2 = _interopRequireDefault(_underscore);
+
+	var _party = __webpack_require__(110);
+
+	var _party2 = _interopRequireDefault(_party);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 	exports.default = {
+	   getList: getList,
 	   getListData: getListData,
 	   getSingleData: getSingleData
 	};
+
+	function getList() {
+	   return getListData().filter(function (party) {
+	      return party.slug === 'a' || party.slug === 'sv';
+	   }).map(function (data) {
+	      return new _party2.default(data);
+	   });
+	}
 
 	function getListData() {
 	   return [{
@@ -70098,33 +70125,60 @@
 
 	"use strict";
 
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var Party = function Party(data) {
-	  _classCallCheck(this, Party);
+	var Party = (function () {
+	  function Party(data) {
+	    _classCallCheck(this, Party);
 
-	  this.data = data;
-	};
+	    this.data = data;
+	  }
+
+	  _createClass(Party, [{
+	    key: "getName",
+	    value: function getName() {
+	      return this.data.name;
+	    }
+	  }]);
+
+	  return Party;
+	})();
 
 	exports.default = Party;
 
 /***/ },
 /* 111 */
-/***/ function(module, exports) {
+/***/ function(module, exports, __webpack_require__) {
 
 	"use strict";
 
 	Object.defineProperty(exports, "__esModule", {
 	   value: true
 	});
+
+	var _promise = __webpack_require__(107);
+
+	var _promise2 = _interopRequireDefault(_promise);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 	exports.default = {
+	   getList: getList,
 	   getListData: getListData,
 	   getSingleData: getSingleData
 	};
+
+	function getList() {
+	   return getListData().slice(0, 10).map(function (data) {
+	      return new _promise2.default(data);
+	   });
+	}
 
 	function getListData() {
 	   return [{
@@ -70526,6 +70580,57 @@
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	exports.default = angular.module('party', []).service('partyService', _party2.default).name;
+
+/***/ },
+/* 117 */
+/***/ function(module, exports) {
+
+	"use strict";
+
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	var Game = (function () {
+	  function Game(parties, promises) {
+	    _classCallCheck(this, Game);
+
+	    this.parties = parties;
+	    this.promises = promises;
+	    this.currentPromise = 0;
+	    this.answers = [];
+	  }
+
+	  _createClass(Game, [{
+	    key: "getScore",
+	    value: function getScore() {
+	      var _this = this;
+
+	      return this.answers.reduce(function (score, answer, index) {
+	        return score + _this.promises[index].promisedBy(answer.getName()) ? 1 : 0;
+	      }, 0);
+	    }
+	  }, {
+	    key: "giveAnswer",
+	    value: function giveAnswer(partyIndex) {
+	      this.answers[this.currentPromise] = this.parties[partyIndex];
+	      return ++this.currentPromise;
+	    }
+	  }, {
+	    key: "setAnswer",
+	    value: function setAnswer(index, partyIndex) {
+	      this.answers[index] = this.parties[partyIndex];
+	    }
+	  }]);
+
+	  return Game;
+	})();
+
+	exports.default = Game;
 
 /***/ }
 /******/ ]);

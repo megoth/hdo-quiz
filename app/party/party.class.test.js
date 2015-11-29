@@ -12,4 +12,8 @@ describe('Class: Party', () => {
   it('sets data', () => {
     expect(party.data).toBe(data);
   });
+
+  it('gets name', () => {
+    expect(party.getName()).toBe('Arbeiderpartiet');
+  })
 });

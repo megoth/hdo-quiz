@@ -1,9 +1,9 @@
 <div>
   <ul>
-    <li ng-repeat="promise in game.promises" ng-show="game.currentPromise === $index">
-      <div class="card" hdo-card="game" on-swipe-left="game.swipeLeft(promise)" on-swipe-right="game.swipeRight(promise)">
+    <li ng-repeat="promise in game.promises" ng-show="game.game.currentPromise === $index">
+      <div class="card" hdo-card="game" on-swipe-left="game.swipeLeft()" on-swipe-right="game.swipeRight()">
         <div class="item item-text-wrap">
-          <p>Card {{$index}}</p>
+          <p>{{promise.getText()}}</p>
         </div>
       </div>
     </li>
