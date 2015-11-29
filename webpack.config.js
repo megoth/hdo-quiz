@@ -7,6 +7,7 @@ module.exports = {
     path: path.resolve(__dirname, 'www/js'),
     filename: 'app.js'
   },
+  devtool: 'source-map',
   module: {
     loaders: [
       { test: /\.html$/, loader: 'raw' },

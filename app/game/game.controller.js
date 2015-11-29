@@ -6,6 +6,8 @@ export default function GameController(promiseService, partyService) {
   var vm = this;
   vm.addCard = addCard;
   vm.giveAnswer = giveAnswer;
+  vm.isCurrent = isCurrent;
+  vm.isFinished = isFinished;
   vm.swipeLeft = swipeLeft;
   vm.swipeRight = swipeRight;
 
@@ -16,6 +18,7 @@ export default function GameController(promiseService, partyService) {
     vm.promises = promiseService.getPromises();
     vm.game = new Game(vm.parties, vm.promises);
     vm.stack = Swing.Stack();
+    vm.getScore = vm.game.getScore.bind(vm.game);
   }
 
   function addCard(cardElement) {
@@ -24,6 +27,14 @@ export default function GameController(promiseService, partyService) {
 
   function giveAnswer(partyIndex) {
     vm.game.giveAnswer(partyIndex);
+  }
+
+  function isCurrent(index) {
+    return vm.game.currentPromise === index;
+  }
+
+  function isFinished() {
+    return vm.game.currentPromise >= vm.promises.length;
   }
 
   function swipeLeft() {

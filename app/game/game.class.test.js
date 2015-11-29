@@ -29,6 +29,11 @@ describe('Class: Game', function () {
     expect(game.getScore()).toBe(1);
   });
 
+  it('can give an array of answer', function () {
+    expect(game.giveAnswers([0, 0, 0, 0, 0, 0, 0, 0, 0, 0])).toBe(10);
+    expect(game.getScore()).toBe(7);
+  });
+
   it('can get number of correct answers', function () {
     expect(game.getScore()).toBe(0);
     game.setAnswer(0, 0);

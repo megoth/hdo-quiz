@@ -22,6 +22,15 @@ describe('Controller: Game', function () {
     expect(controller.game.giveAnswer).toHaveBeenCalledWith(0);
   });
 
+  it('can check whether an index is the current', function () {
+    expect(controller.isCurrent(0)).toBe(true);
+    expect(controller.isCurrent(1)).toBe(false);
+  });
+
+  it('can check whether if game is finished', function () {
+    expect(controller.isFinished()).toBe(false);
+  });
+
   describe('swiping a promise to the left', function () {
     beforeEach(function() {
       controller.swipeLeft();

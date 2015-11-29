@@ -1,18 +1,25 @@
 <div>
-  <ul>
-    <li ng-repeat="promise in game.promises" ng-show="game.game.currentPromise === $index">
-      <div class="card" hdo-card="game" on-swipe-left="game.swipeLeft()" on-swipe-right="game.swipeRight()">
+  <ul ng-hide="game.isFinished()">
+    <li ng-repeat="promise in game.promises" ng-show="game.isCurrent($index)">
+      <div class="card answer-card" hdo-card="game" on-swipe-left="game.swipeLeft()" on-swipe-right="game.swipeRight()">
         <div class="item item-text-wrap">
           <p>{{promise.getText()}}</p>
         </div>
       </div>
     </li>
   </ul>
-  <div class="row answer-alternatives">
+  <div ng-hide="game.isFinished()" class="row answer-alternatives">
     <div class="col" ng-repeat="party in game.parties">
       <button class="button button-clear" type="button" ng-click="game.giveAnswer($index)">
         <img ng-src="{{party.getLogo()}}" />
       </button>
+    </div>
+  </div>
+  <div ng-show="game.isFinished()" class="card">
+    <div class="item item-divider">Du fikk {{game.getScore()}} av {{game.promises.length}} riktige!</div>
+    <div class="item item-text-wrap">Gratulerer!</div>
+    <div class="item item-divider">
+      <a ui-sref="root.start">Tilbake til start</a>
     </div>
   </div>
 </div>
