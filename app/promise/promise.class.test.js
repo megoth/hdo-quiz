@@ -13,8 +13,8 @@ describe('Class: Promise', () => {
     expect(promise.data).toBe(data);
   });
 
-  it('can get text', () => {
-    expect(promise.getText()).toBe(data.body);
+  it('removes party-specific words from text', () => {
+    expect(promise.getText()).toBe(data.body.replace('Ap', '[Partiet]'));
   });
 
   it('can verify promisor', () => {

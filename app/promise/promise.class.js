@@ -4,7 +4,7 @@ export default class PartyPromise {
   }
 
   getText() {
-    return this.data.body;
+    return this.data.body.replace(/(Ap|SV)/g, '[Partiet]');
   }
 
   promisedBy(promisorName) {
