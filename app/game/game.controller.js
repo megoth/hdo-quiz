@@ -5,6 +5,7 @@ GameController.$inject = ['promiseService', 'partyService'];
 export default function GameController(promiseService, partyService) {
   var vm = this;
   vm.addCard = addCard;
+  vm.getResponse = getResponse;
   vm.giveAnswer = giveAnswer;
   vm.isCurrent = isCurrent;
   vm.isFinished = isFinished;
@@ -23,6 +24,11 @@ export default function GameController(promiseService, partyService) {
 
   function addCard(cardElement) {
     vm.stack.createCard(cardElement);
+  }
+
+  function getResponse(promiseIndex) {
+    var party = vm.game.getResponse(promiseIndex);
+    return party ? party.getName() : '';
   }
 
   function giveAnswer(partyIndex) {

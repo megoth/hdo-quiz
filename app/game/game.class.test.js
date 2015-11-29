@@ -41,4 +41,10 @@ describe('Class: Game', function () {
     game.setAnswer(0, 1);
     expect(game.getScore()).toBe(0);
   });
+
+  it('can get response', function () {
+    expect(game.getResponse(0)).toBe(null);
+    game.setAnswer(0, 0);
+    expect(game.getResponse(0)).toBe(parties[0]);
+  });
 });

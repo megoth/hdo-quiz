@@ -6,6 +6,10 @@ export default class Game {
     this.answers = [];
   }
 
+  getResponse(promiseIndex) {
+    return this.answers[promiseIndex] || null;
+  }
+
   getScore() {
     return this.answers.reduce((score, answer, index) => {
       return score + (this.promises[index].promisedBy(answer.getName()) ? 1 : 0);

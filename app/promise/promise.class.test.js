@@ -13,8 +13,16 @@ describe('Class: Promise', () => {
     expect(promise.data).toBe(data);
   });
 
-  it('removes party-specific words from text', () => {
-    expect(promise.getText()).toBe(data.body.replace('Ap', '[Partiet]'));
+  it('gets text', () => {
+    expect(promise.getText()).toBe(data.body);
+  });
+
+  it('can removes party-specific words from text', () => {
+    expect(promise.getCensored()).toBe(data.body.replace('Ap', '[Partiet]'));
+  });
+
+  it('can get promisor', () => {
+    expect(promise.getPromisor()).toEqual('Arbeiderpartiet');
   });
 
   it('can verify promisor', () => {

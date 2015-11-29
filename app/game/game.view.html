@@ -3,7 +3,7 @@
     <li ng-repeat="promise in game.promises" ng-show="game.isCurrent($index)">
       <div class="card answer-card" hdo-card="game" on-swipe-left="game.swipeLeft()" on-swipe-right="game.swipeRight()">
         <div class="item item-text-wrap">
-          <p>{{promise.getText()}}</p>
+          <p>{{promise.getCensored()}}</p>
         </div>
       </div>
     </li>
@@ -17,7 +17,15 @@
   </div>
   <div ng-show="game.isFinished()" class="card">
     <div class="item item-divider">Du fikk {{game.getScore()}} av {{game.promises.length}} riktige!</div>
-    <div class="item item-text-wrap">Gratulerer!</div>
+    <div class="item item-text-wrap">
+      <ul class="list">
+        <li class="item" ng-repeat="promise in game.promises">
+          <p><strong>Løfte:</strong> {{promise.getText()}}</p>
+          <p><strong>Du svarte:</strong> {{game.getResponse($index)}}
+          <p><strong>Riktig svar:</strong> {{promise.getPromisor()}}
+        </li>
+      </ul>
+    </div>
     <div class="item item-divider">
       <a ui-sref="root.start">Tilbake til start</a>
     </div>

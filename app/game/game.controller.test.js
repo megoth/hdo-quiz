@@ -6,7 +6,7 @@ describe('Controller: Game', function () {
   beforeEach(angular.mock.module(game));
   beforeEach(inject(function ($controller) {
     controller = $controller('game');
-    spyOn(controller.game, 'giveAnswer');
+    spyOn(controller.game, 'giveAnswer').and.callThrough();
   }));
 
   it('should setup game', function () {
@@ -29,6 +29,12 @@ describe('Controller: Game', function () {
 
   it('can check whether if game is finished', function () {
     expect(controller.isFinished()).toBe(false);
+  });
+
+  it('can get response', function () {
+    expect(controller.getResponse(0)).toBe('');
+    controller.giveAnswer(0);
+    expect(controller.getResponse(0)).toBe('Arbeiderpartiet');
   });
 
   describe('swiping a promise to the left', function () {
