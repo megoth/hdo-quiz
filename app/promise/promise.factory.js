@@ -1,5 +1,7 @@
 'use strict';
 
+import PartyPromise from './promise.class';
+
 module.exports = promiseFactory;
 
 promiseFactory.$inject = [];
@@ -10,11 +12,5 @@ function promiseFactory() {
 
   function create(data) {
     return new PartyPromise(data);
-  }
-}
-
-class PartyPromise {
-  constructor(data) {
-    this.data = data;
   }
 }
