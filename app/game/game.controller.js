@@ -1,6 +1,6 @@
 var Swing = require('swing');
 
-function GameController($scope) {
+function GameController() {
   var vm = this;
   vm.addCard = addCard;
   vm.swipeLeft = swipeLeft;
