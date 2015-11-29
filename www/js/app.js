@@ -78,21 +78,17 @@
 
 	var _ionic2 = _interopRequireDefault(_ionic);
 
-	var _card = __webpack_require__(104);
-
-	var _card2 = _interopRequireDefault(_card);
-
 	var _party = __webpack_require__(108);
 
 	var _party2 = _interopRequireDefault(_party);
 
-	var _promise = __webpack_require__(105);
+	var _game = __webpack_require__(112);
 
-	var _promise2 = _interopRequireDefault(_promise);
+	var _game2 = _interopRequireDefault(_game);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = _angular2.default.module('hdoQuiz', ['ionic', _angularUiRouter2.default]).config(_states2.default).run(_ionic2.default).directive('hdoCard', _card2.default).service('partyService', _party2.default).service('promiseService', _promise2.default);
+	exports.default = _angular2.default.module('hdoQuiz', ['ionic', _angularUiRouter2.default, _game2.default]).config(_states2.default).run(_ionic2.default);
 
 /***/ },
 /* 1 */
@@ -60716,7 +60712,7 @@
 	  }).state('root.game', {
 	    url: '/game',
 	    template: __webpack_require__(22),
-	    controller: __webpack_require__(23),
+	    controller: 'game',
 	    controllerAs: 'game',
 	    data: {
 	      title: 'Spill'
@@ -60797,6 +60793,10 @@
 
 	'use strict';
 
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = GameController;
 	var Swing = __webpack_require__(24);
 
 	GameController.$inject = ['promiseService'];
@@ -60826,8 +60826,6 @@
 	    vm.currentPromise++;
 	  }
 	}
-
-	module.exports = GameController;
 
 /***/ },
 /* 24 */
@@ -68193,28 +68191,7 @@
 	}
 
 /***/ },
-/* 104 */
-/***/ function(module, exports) {
-
-	'use strict';
-
-	card.$inject = [];
-	function card() {
-	  return {
-	    scope: {
-	      game: '=hdoCard'
-	    },
-	    link: link
-	  };
-
-	  function link($scope, $element) {
-	    $scope.game.addCard($element[0]);
-	  }
-	}
-
-	module.exports = card;
-
-/***/ },
+/* 104 */,
 /* 105 */
 /***/ function(module, exports, __webpack_require__) {
 
@@ -70421,6 +70398,92 @@
 	         }
 	      }
 	   };
+	}
+
+/***/ },
+/* 112 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _card = __webpack_require__(114);
+
+	var _card2 = _interopRequireDefault(_card);
+
+	var _promise = __webpack_require__(113);
+
+	var _promise2 = _interopRequireDefault(_promise);
+
+	var _game = __webpack_require__(23);
+
+	var _game2 = _interopRequireDefault(_game);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = angular.module('game', [_promise2.default, _card2.default]).controller('game', _game2.default).name;
+
+/***/ },
+/* 113 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _promise = __webpack_require__(105);
+
+	var _promise2 = _interopRequireDefault(_promise);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = angular.module('promise', []).service('promiseService', _promise2.default).name;
+
+/***/ },
+/* 114 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _card = __webpack_require__(115);
+
+	var _card2 = _interopRequireDefault(_card);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = angular.module('card', []).directive('hdoCard', _card2.default).name;
+
+/***/ },
+/* 115 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.default = card;
+	card.$inject = [];
+	function card() {
+	  return {
+	    scope: {
+	      game: '=hdoCard'
+	    },
+	    link: link
+	  };
+
+	  function link($scope, $element) {
+	    $scope.game.addCard($element[0]);
+	  }
 	}
 
 /***/ }

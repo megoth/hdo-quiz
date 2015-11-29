@@ -12,13 +12,10 @@ import './style/app.scss';
 
 import statesConfig from './states.config';
 import ionicConfig from './ionic.config';
-import hdoCard from './directives/card.directive';
 import partyService from './party/party.service';
-import promiseService from './promise/promise.service';
 
-export default angular.module('hdoQuiz', ['ionic', uiRouter])
+import game from './game/game.app';
+
+export default angular.module('hdoQuiz', ['ionic', uiRouter, game])
   .config(statesConfig)
-  .run(ionicConfig)
-  .directive('hdoCard', hdoCard)
-  .service('partyService', partyService)
-  .service('promiseService', promiseService);
+  .run(ionicConfig);

@@ -1,7 +1,7 @@
-var Swing = require('swing');
+const Swing = require('swing');
 
 GameController.$inject = ['promiseService'];
-function GameController(promiseService) {
+export default function GameController(promiseService) {
   var vm = this;
   vm.addCard = addCard;
   vm.swipeLeft = swipeLeft;
@@ -27,5 +27,3 @@ function GameController(promiseService) {
     vm.currentPromise++;
   }
 }
-
-module.exports = GameController;

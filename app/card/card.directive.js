@@ -1,5 +1,5 @@
 card.$inject = [];
-function card() {
+export default function card() {
   return {
     scope: {
       game: '=hdoCard'
@@ -11,5 +11,3 @@ function card() {
     $scope.game.addCard($element[0]);
   }
 }
-
-module.exports = card;

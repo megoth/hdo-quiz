@@ -19,7 +19,7 @@ export default function stateConfig($stateProvider, $urlRouterProvider) {
     .state('root.game', {
       url: '/game',
       template: require('./game/game.view.html'),
-      controller: require('./game/game.controller'),
+      controller: 'game',
       controllerAs: 'game',
       data: {
         title: 'Spill'
