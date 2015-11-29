@@ -64307,14 +64307,30 @@
 /* 14 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"card\">\n  <div class=\"item item-text-wrap\">\n    <p>In the criminal justice system, the people are represented by two separate yet equally important groups. The police who investigate crime and the district attorneys who prosecute the offenders. These are their stories.</p>\n    <p>Man lives in the sunlit world of what he believes to be reality. But, there is, unseen by most, an underworld, a place that is just as real, but not as brightly lit... a darkside. The darkside is always there, waiting for us to enter, waiting to enter us. So until next time, try to enjoy the daylight.</p>\n    <p>They arrived in fifty mother ships, offering their friendship and advance technology to Earth. Skeptical of the visitors, Mike Donovan and Juliet Parrish infiltrated their ranks and soon discovered some startling secrets. The resistance is all that stands between us... and the visitors.</p>\n  </div>\n</div>"
+	module.exports = "<div class=\"card\" on-swipe-left=\"game.swipeLeft()\" on-swipe-right=\"game.swipeRight()\">\n  <div class=\"item item-text-wrap\">\n    <p>In the criminal justice system, the people are represented by two separate yet equally important groups. The police who investigate crime and the district attorneys who prosecute the offenders. These are their stories.</p>\n    <p>Man lives in the sunlit world of what he believes to be reality. But, there is, unseen by most, an underworld, a place that is just as real, but not as brightly lit... a darkside. The darkside is always there, waiting for us to enter, waiting to enter us. So until next time, try to enjoy the daylight.</p>\n    <p>They arrived in fifty mother ships, offering their friendship and advance technology to Earth. Skeptical of the visitors, Mike Donovan and Juliet Parrish infiltrated their ranks and soon discovered some startling secrets. The resistance is all that stands between us... and the visitors.</p>\n    <p>Swipe direction was: {{game.direction}}</p>\n  </div>\n</div>"
 
 /***/ },
 /* 15 */
 /***/ function(module, exports) {
 
 	function GameController() {
+	  var vm = this;
+	  vm.swipeLeft = swipeLeft;
+	  vm.swipeRight = swipeRight;
 
+	  activate();
+
+	  function activate() {
+	    vm.direction = 'no swipe yet';
+	  }
+
+	  function swipeLeft() {
+	    vm.direction = 'left';
+	  }
+
+	  function swipeRight() {
+	    vm.direction = 'right';
+	  }
 	}
 
 	module.exports = GameController;
