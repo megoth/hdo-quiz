@@ -1,6 +1,8 @@
 require('ionic');
 require('angular-ui-router');
 
+require('./style/app.scss');
+
 angular.module('hdoQuiz', ['ionic', 'ui.router'])
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider

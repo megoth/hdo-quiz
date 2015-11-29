@@ -9,7 +9,8 @@ module.exports = {
     },
     module: {
       loaders: [
-        { test: /\.html$/, loader: "raw-loader" }
+        { test: /\.html$/, loader: "raw-loader" },
+        { test: /\.scss$/, loaders: ["style", "css", "sass"] }
       ]
     },
     resolve: {
