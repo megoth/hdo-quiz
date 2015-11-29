@@ -8,7 +8,7 @@ function RootController($ionicSideMenuDelegate, $state, $rootScope) {
     $ionicSideMenuDelegate.canDragContent(false);
     vm.title = $state.$current.data.title;
     $rootScope.$on('$stateChangeSuccess', function (event, toState) {
-      $ionicSideMenuDelegate.toggleLeft();
+      $ionicSideMenuDelegate.toggleLeft(false);
       vm.title = toState.data.title;
     });
   }

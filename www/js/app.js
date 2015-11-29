@@ -67,6 +67,15 @@
 	          title: 'Start'
 	        }
 	      })
+	      .state('root.game', {
+	        url: '/game',
+	        template: __webpack_require__(14),
+	        controller: __webpack_require__(15),
+	        controllerAs: 'game',
+	        data: {
+	          title: 'Spill'
+	        }
+	      })
 	      .state('root.settings', {
 	        url: '/settings',
 	        template: __webpack_require__(12),
@@ -64250,7 +64259,7 @@
 	    $ionicSideMenuDelegate.canDragContent(false);
 	    vm.title = $state.$current.data.title;
 	    $rootScope.$on('$stateChangeSuccess', function (event, toState) {
-	      $ionicSideMenuDelegate.toggleLeft();
+	      $ionicSideMenuDelegate.toggleLeft(false);
 	      vm.title = toState.data.title;
 	    });
 	  }
@@ -64266,7 +64275,7 @@
 /* 10 */
 /***/ function(module, exports) {
 
-	module.exports = "<div>Start ting</div>"
+	module.exports = "<div class=\"list card\">\n  <a ui-sref=\"root.game\" class=\"item item-icon-left\">\n    <i class=\"icon ion-star\"></i>\n    Start spill\n  </a>\n</div>"
 
 /***/ },
 /* 11 */
@@ -64293,6 +64302,22 @@
 	}
 
 	module.exports = SettingsController;
+
+/***/ },
+/* 14 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"card\">\n  <div class=\"item item-text-wrap\">\n    <p>In the criminal justice system, the people are represented by two separate yet equally important groups. The police who investigate crime and the district attorneys who prosecute the offenders. These are their stories.</p>\n    <p>Man lives in the sunlit world of what he believes to be reality. But, there is, unseen by most, an underworld, a place that is just as real, but not as brightly lit... a darkside. The darkside is always there, waiting for us to enter, waiting to enter us. So until next time, try to enjoy the daylight.</p>\n    <p>They arrived in fifty mother ships, offering their friendship and advance technology to Earth. Skeptical of the visitors, Mike Donovan and Juliet Parrish infiltrated their ranks and soon discovered some startling secrets. The resistance is all that stands between us... and the visitors.</p>\n  </div>\n</div>"
+
+/***/ },
+/* 15 */
+/***/ function(module, exports) {
+
+	function GameController() {
+
+	}
+
+	module.exports = GameController;
 
 /***/ }
 /******/ ]);

@@ -21,6 +21,15 @@ angular.module('hdoQuiz', ['ionic', 'ui.router'])
           title: 'Start'
         }
       })
+      .state('root.game', {
+        url: '/game',
+        template: require('./game/game.view.html'),
+        controller: require('./game/game.controller'),
+        controllerAs: 'game',
+        data: {
+          title: 'Spill'
+        }
+      })
       .state('root.settings', {
         url: '/settings',
         template: require('./settings/settings.view.html'),
