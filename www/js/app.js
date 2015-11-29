@@ -60799,8 +60799,8 @@
 	exports.default = GameController;
 	var Swing = __webpack_require__(24);
 
-	GameController.$inject = ['promiseService'];
-	function GameController(promiseService) {
+	GameController.$inject = ['promiseService', 'partyService'];
+	function GameController(promiseService, partyService) {
 	  var vm = this;
 	  vm.addCard = addCard;
 	  vm.swipeLeft = swipeLeft;
@@ -60809,6 +60809,7 @@
 	  activate();
 
 	  function activate() {
+	    vm.parties = partyService.getParties();
 	    vm.promises = promiseService.getPromises();
 	    vm.currentPromise = 0;
 	    vm.stack = Swing.Stack();
@@ -69790,17 +69791,35 @@
 
 	"use strict";
 
+	var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-	var PartyPromise = function PartyPromise(data) {
-	  _classCallCheck(this, PartyPromise);
+	var PartyPromise = (function () {
+	  function PartyPromise(data) {
+	    _classCallCheck(this, PartyPromise);
 
-	  this.data = data;
-	};
+	    this.data = data;
+	  }
+
+	  _createClass(PartyPromise, [{
+	    key: "getText",
+	    value: function getText() {
+	      return this.data.body;
+	    }
+	  }, {
+	    key: "promisedBy",
+	    value: function promisedBy(promisorName) {
+	      return this.data.promisor_name === promisorName;
+	    }
+	  }]);
+
+	  return PartyPromise;
+	})();
 
 	exports.default = PartyPromise;
 
@@ -70414,6 +70433,10 @@
 
 	var _card2 = _interopRequireDefault(_card);
 
+	var _party = __webpack_require__(116);
+
+	var _party2 = _interopRequireDefault(_party);
+
 	var _promise = __webpack_require__(113);
 
 	var _promise2 = _interopRequireDefault(_promise);
@@ -70424,7 +70447,7 @@
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-	exports.default = angular.module('game', [_promise2.default, _card2.default]).controller('game', _game2.default).name;
+	exports.default = angular.module('game', [_card2.default, _party2.default, _promise2.default]).controller('game', _game2.default).name;
 
 /***/ },
 /* 113 */
@@ -70485,6 +70508,24 @@
 	    $scope.game.addCard($element[0]);
 	  }
 	}
+
+/***/ },
+/* 116 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _party = __webpack_require__(108);
+
+	var _party2 = _interopRequireDefault(_party);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	exports.default = angular.module('party', []).service('partyService', _party2.default).name;
 
 /***/ }
 /******/ ]);

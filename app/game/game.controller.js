@@ -1,7 +1,7 @@
 const Swing = require('swing');
 
-GameController.$inject = ['promiseService'];
-export default function GameController(promiseService) {
+GameController.$inject = ['promiseService', 'partyService'];
+export default function GameController(promiseService, partyService) {
   var vm = this;
   vm.addCard = addCard;
   vm.swipeLeft = swipeLeft;
@@ -10,6 +10,7 @@ export default function GameController(promiseService) {
   activate();
 
   function activate() {
+    vm.parties = partyService.getParties();
     vm.promises = promiseService.getPromises();
     vm.currentPromise = 0;
     vm.stack = Swing.Stack();
