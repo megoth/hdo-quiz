@@ -24,7 +24,6 @@ export default function GameController(promiseService, partyService, eventsServi
     ));
     vm.stack = Swing.Stack();
     vm.getScore = vm.game.getScore.bind(vm.game);
-    eventsService.emit('title', '1 av 10');
   }
 
   function addCard(cardElement) {

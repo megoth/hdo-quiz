@@ -33,6 +33,7 @@ export default class Game {
 
   onNext(handler) {
     this.onNextSubscribers.subscribe(handler);
+    this.onNextSubscribers.onNext(this.currentPromise, this.promises[this.currentPromise]);
   }
 
   setAnswer(index, partyIndex) {
