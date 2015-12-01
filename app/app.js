@@ -15,7 +15,8 @@ import ionicConfig from './ionic.config';
 import partyService from './party/party.service';
 
 import game from './game/game.app';
+import root from './root/root.app';
 
-export default angular.module('hdoQuiz', ['ionic', uiRouter, game])
+export default angular.module('hdoQuiz', ['ionic', uiRouter, game, root])
   .config(statesConfig)
   .run(ionicConfig);

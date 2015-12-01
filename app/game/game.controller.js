@@ -1,8 +1,8 @@
 import Game from './game.class';
 const Swing = require('swing');
 
-GameController.$inject = ['promiseService', 'partyService'];
-export default function GameController(promiseService, partyService) {
+GameController.$inject = ['promiseService', 'partyService', 'eventsService'];
+export default function GameController(promiseService, partyService, eventsService) {
   var vm = this;
   vm.addCard = addCard;
   vm.getResponse = getResponse;
@@ -18,8 +18,13 @@ export default function GameController(promiseService, partyService) {
     vm.parties = partyService.getParties();
     vm.promises = promiseService.getPromises();
     vm.game = new Game(vm.parties, vm.promises);
+    vm.game.onNext((index) => eventsService.emit('title', index < vm.promises.length ? 
+      `${index+1} av ${vm.promises.length}` :
+      'Ferdig!'
+    ));
     vm.stack = Swing.Stack();
     vm.getScore = vm.game.getScore.bind(vm.game);
+    eventsService.emit('title', '1 av 10');
   }
 
   function addCard(cardElement) {
