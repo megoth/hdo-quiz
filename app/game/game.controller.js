@@ -22,6 +22,10 @@ export default function GameController(promiseService, partyService, eventsServi
       `${index+1} av ${vm.promises.length}` :
       'Ferdig!'
     ));
+    vm.game.onResponse((data) => {
+      vm.respondedCorrect = data[0];
+      vm.correctAnswer = data[1];
+    });
     vm.stack = Swing.Stack();
     vm.getScore = vm.game.getScore.bind(vm.game);
   }

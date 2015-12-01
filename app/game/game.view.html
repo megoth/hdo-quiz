@@ -1,4 +1,7 @@
 <div>
+  <div class="alert" ng-class="{'alert-success': game.respondedCorrect, 'alert-danger': !game.respondedCorrect}" ng-show="game.respondedCorrect !== undefined">
+    Svaret var {{game.correctAnswer}}
+  </div>
   <ul ng-hide="game.isFinished()">
     <li ng-repeat="promise in game.promises" ng-show="game.isCurrent($index)">
       <div class="card answer-card" hdo-card="game" on-swipe-left="game.swipeLeft()" on-swipe-right="game.swipeRight()">
